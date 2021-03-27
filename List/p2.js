@@ -2,25 +2,25 @@
  * 增加一个列表插入元素方法
  * 只在待插元素小于列表中所有元素才执行插入操作
  */
- function List() {
-    this.listSize = 0;
-    this.pos = 0;
-    this.dataStore = [4,6,"a",2];
-    this.insert = insert;
-}
+ let List = require('./List');
 
-function insert(element) {
+function insertOfSmall(list,element) {
     let islarge = true;
-    for (let i = 0;i < this.dataStore.length;i++){
-        if (element > this.dataStore[i]) {
+    let data = list.dataStore;
+    for (let i = 0;i < data.length;i++){
+        if (element > data[i]) {
             islarge = false;
         }
     }
     if (islarge) {
-        this.dataStore.push(element);
+        data.push(element);
     }
-    return this.dataStore;
+    return data;
 }
 
 const list = new List();
-console.log(list.insert(1))
+list.append(3);
+list.append(9);
+list.append(4);
+list.append(6);
+console.log(insertOfSmall(list,1));
